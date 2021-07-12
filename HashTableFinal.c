@@ -396,9 +396,10 @@ void quadratic_probing_insert(student *s)
 {
     if(s == NULL) return false;
     int index = Birth_Day_Hash(s->day, s->month, s->year);
+    int trial;
     for(int i=0; i < TableSize; i++)
     {
-        int trial = (index + i^2) % TableSize;
+        trial = (index + i*i) % TableSize;
         if(hashtable[trial] == DeletedNode)
         {
             hashtable[trial] = s;
